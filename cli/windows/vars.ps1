@@ -1,0 +1,1 @@
+. "${PSScriptRoot}\..\globals.ps1"
