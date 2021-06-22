@@ -1,5 +1,6 @@
-$git = 'C:\Program Files\Git\bin\git.exe'
-$cmake  = 'C:\Program Files\CMake\bin\cmake.exe'
+$Git = 'C:\Program Files\Git\bin\git.exe'
+$CMake  = 'C:\Program Files\CMake\bin\cmake.exe'
 
-$root = $PSScriptRoot
-$root = Split-Path -Path $root -Parent
+$Root = $PSScriptRoot
+$Root = Split-Path -Path $Root -Parent
+$RootName = Split-Path -Path $Root -Leaf

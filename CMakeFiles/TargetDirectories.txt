@@ -1,0 +1,2 @@
+C:/Users/lvega1/Documents/Git/vscode-dev-template/CMakeFiles/ALL_BUILD.dir
+C:/Users/lvega1/Documents/Git/vscode-dev-template/CMakeFiles/ZERO_CHECK.dir
