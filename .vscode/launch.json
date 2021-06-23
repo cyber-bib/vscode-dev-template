@@ -1,0 +1,24 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Config (Windows MinGW)",
+			"type": "PowerShell",
+			"request": "launch",
+			"script": "${workspaceFolder}/cli/windows/MinGW/config.ps1"
+		},
+		{
+			"name": "Build (Windows MinGW)",
+			"type": "PowerShell",
+			"request": "launch",
+			"script": "${workspaceFolder}/cli/windows/MinGW/build.ps1"
+		},
+		{
+			"name": "Run (Windows MinGW)",
+			"type": "PowerShell",
+			"request": "launch",
+			"script": "${workspaceFolder}/cli/windows/MinGW/run.ps1",
+			"preLaunchTask": "WinMinGW-Build",
+		}
+	]
+}
