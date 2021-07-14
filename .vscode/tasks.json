@@ -1,35 +1,77 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{
-			"label": "WinMinGW-Config",
-			"type": "shell",
-			"command": "${workspaceFolder}/cli/windows/MinGW/config.ps1",
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": false,
-				"close": true
-			}
-		},
-		{
-			"label": "WinMinGW-Build",
-			"type": "shell",
-			"command": "${workspaceFolder}/cli/windows/MinGW/build.ps1",
-			"dependsOrder": "sequence",
-			"dependsOn": ["WinMinGW-Config"],
-			"presentation": {
-				"echo": true,
-				"reveal": "always",
-				"focus": false,
-				"panel": "shared",
-				"showReuseMessage": true,
-				"clear": false,
-				"close": true
-			}
-		},
+		// #region Windows
+			// #region MSVC
+				// #region config
+				{
+					"label": "WinMSVC-Config",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/MSVC/config.ps1",
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion config
+				// #region build
+				{
+					"label": "WinMSVC-Config",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/MSVC/config.ps1",
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion build
+			// #endregion MSVS
+			// #region WinGW
+				// #region config
+				{
+					"label": "WinMinGW-Config",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/MinGW/config.ps1",
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion config
+				// #region build
+				{
+					"label": "WinMinGW-Build",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/MinGW/build.ps1",
+					"dependsOrder": "sequence",
+					"dependsOn": ["WinMinGW-Config"],
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion build
+			// #endregion WinGW
+		// #endregion Windows
 	]
 }

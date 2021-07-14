@@ -1,86 +1,88 @@
 {
 	"version": "0.2.0",
 	"configurations": [
-		// #region MSVS
-			// #region Config
-			{
-				"name": "Config (Windows MSVS)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MSVS/config.ps1"
-			},
-			// #endregion Config
-			// #region Build
-			{
-				"name": "Build (Windows MSVS)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MSVS/build.ps1"
-			},
-			// #endregion Build
-			// #region Run
-			{
-				"name": "Run (Windows MSVS)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MSVS/run.ps1",
-				"preLaunchTask": "WinMSVS-Build",
-			},
-			// #endregion Run
-		// #endregion MSVS
-		// #region MinGW
-			// #region Config
-			{
-				"name": "Config (Windows MinGW)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MinGW/config.ps1"
-			},
-			// #endregion Config
-			// #region Build
-			{
-				"name": "Build (Windows MinGW)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MinGW/build.ps1"
-			},
-			// #endregion Build
-			// #region Run
-			{
-				"name": "Run (Windows MinGW)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/MinGW/run.ps1",
-				"preLaunchTask": "WinMinGW-Build",
-			},
-			// #endregion Run
-		// #endregion MinGW
-		// #region Ninja
-			// #region Config
-			{
-				"name": "Config (Windows Ninja)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/Ninja/config.ps1"
-			},
-			// #endregion Config
-			// #region Build
-			{
-				"name": "Build (Windows Ninja)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/Ninja/build.ps1"
-			},
-			// #endregion Build
-			// #region Run
-			{
-				"name": "Run (Windows Ninja)",
-				"type": "PowerShell",
-				"request": "launch",
-				"script": "${workspaceFolder}/cli/windows/Ninja/run.ps1",
-				"preLaunchTask": "WinNinja-Build",
-			}
-			// #endregion Run
-		// #endregion Ninja
+		// #region Windows
+			// #region MSVC
+				// #region Config
+				{
+					"name": "Config (Windows MSVC)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MSVC/config.ps1"
+				},
+				// #endregion Config
+				// #region Build
+				{
+					"name": "Build (Windows MSVC)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MSVC/build.ps1"
+				},
+				// #endregion Build
+				// #region Run
+				{
+					"name": "Run (Windows MSVC)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MSVC/run.ps1",
+					"preLaunchTask": "WinMSVC-Build",
+				},
+				// #endregion Run
+			// #endregion MSVS
+			// #region MinGW
+				// #region Config
+				{
+					"name": "Config (Windows MinGW)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MinGW/config.ps1"
+				},
+				// #endregion Config
+				// #region Build
+				{
+					"name": "Build (Windows MinGW)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MinGW/build.ps1"
+				},
+				// #endregion Build
+				// #region Run
+				{
+					"name": "Run (Windows MinGW)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/MinGW/run.ps1",
+					"preLaunchTask": "WinMinGW-Build",
+				},
+				// #endregion Run
+			// #endregion MinGW
+			// #region Ninja
+				// #region Config
+				{
+					"name": "Config (Windows Ninja)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/Ninja/config.ps1"
+				},
+				// #endregion Config
+				// #region Build
+				{
+					"name": "Build (Windows Ninja)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/Ninja/build.ps1"
+				},
+				// #endregion Build
+				// #region Run
+				{
+					"name": "Run (Windows Ninja)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/Ninja/run.ps1",
+					"preLaunchTask": "WinNinja-Build",
+				}
+				// #endregion Run
+			// #endregion Ninja
+		// #endregion Windows
 	]
 }

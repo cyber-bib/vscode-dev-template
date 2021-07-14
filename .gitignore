@@ -1,2 +1,4 @@
+# Ignore external build modules
+[Ee]xternal
 # Ignore build directory
 [Bb]uild

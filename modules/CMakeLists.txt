@@ -1,0 +1,11 @@
+add_subdirectory(git)
+add_subdirectory(powershell)
+add_subdirectory(python)
+add_subdirectory(emsdk)
+
+if(EXISTS ${Python3_EXECUTABLE})
+  set(Python3_EXECUTABLE ${Python3_EXECUTABLE} PARENT_SCOPE)
+endif()
+if(EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
+  set(EMSCRIPTEN_TOOLCHAIN_PATH ${EMSCRIPTEN_TOOLCHAIN_PATH} PARENT_SCOPE)
+endif()
