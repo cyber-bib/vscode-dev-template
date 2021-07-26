@@ -2,3 +2,8 @@
 [Ee]xternal
 # Ignore build directory
 [Bb]uild
+# Ignore UI Frameworks
+jquery
+popper
+angular
+bootstrap

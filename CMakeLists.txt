@@ -11,8 +11,10 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(Helpers)
 add_project_defaults()
 
-add_subdirectory(modules external)
+add_subdirectory(tools)
 
+
+# add_subdirectory(modules external)
 # set(CMAKE_TOOLCHAIN_FILE ${EMSCRIPTEN_TOOLCHAIN_PATH})
 add_subdirectory(src core)
 
@@ -20,3 +22,7 @@ add_subdirectory(src core)
 # endif()
 
 # add_subdirectory(src)
+
+# This should be highly dependent on the
+# architecture of the system
+add_subdirectory(ui)

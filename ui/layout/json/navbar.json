@@ -1,0 +1,109 @@
+{
+  "navbar": [
+    {
+      "link": "File",
+      "menu": [
+        {
+          "text": "Open PLY File",
+          "action": "app.openPLY()"
+        },
+        {
+          "text": "Exit",
+          "action": "app.exit()"
+        }
+      ]
+    },
+    {
+      "link": "Edit",
+      "menu": [
+        {
+          "text": "Undo",
+          "action": "app.undo()"
+        },
+        {
+          "text": "Redo",
+          "action": "app.redo()"
+        },
+        {
+          "text": "<br>"
+        },
+        {
+          "text": "Cut",
+          "action": "app.cut()"
+        },
+        {
+          "text": "Copy",
+          "action": "app.copy()"
+        },
+        {
+          "text": "Paste",
+          "action": "app.paste()"
+        },
+        {
+          "text": "Delete",
+          "action": "app.delete()"
+        },
+        {
+          "text": "<br>"
+        },
+        {
+          "text": "Select All",
+          "action": "app.select_all()"
+        }
+      ]
+    },
+    {
+      "link": "View",
+      "menu": [
+        {
+          "text": "Reload",
+          "action": "app.reload()"
+        },
+        {
+          "text": "Force Reload",
+          "action": "app.force_reload()"
+        },
+        {
+          "text": "Toggle Developer Tools",
+          "action": "app.toggle_devtools()"
+        },
+        {
+          "text": "<br>"
+        },
+        {
+          "text": "Actual Size",
+          "action": "app.actual_size()"
+        },
+        {
+          "text": "Zoom in",
+          "action": "app.zoom_in()"
+        },
+        {
+          "text": "Zoom out",
+          "action": "app.zoom_out()"
+        },
+        {
+          "text": "<br>"
+        },
+        {
+          "text": "Toggle Fullscreen",
+          "action": "app.toggle_fullscreen()"
+        }
+
+      ]
+    },
+    {
+      "link": "Help",
+      "menu": [
+        {
+          "text": "Learn More",
+          "action": "app.learn_more()"
+        },
+        {
+          "text": "Documentation",
+          "action": "app.documentation()"
+        }
+      ]
+    }
+  ] 
+}

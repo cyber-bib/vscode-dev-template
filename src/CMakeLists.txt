@@ -21,3 +21,6 @@ set_target_properties(${CMAKE_PROJECT_NAME}-bin
 add_custom_target(genexdebug
 	COMMAND ${CMAKE_COMMAND} -E echo "configuration type: $<CONFIG>"
 )
+
+set(MAIN_EXECUTABLE_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug/${CMAKE_PROJECT_NAME}.exe")
+set(MAIN_EXECUTABLE_PATH ${MAIN_EXECUTABLE_PATH} PARENT_SCOPE)

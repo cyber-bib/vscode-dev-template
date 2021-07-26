@@ -46,7 +46,15 @@ if(NOT Python3_FOUND)
   set(Python3_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/python.exe)
   find_package(Python3 REQUIRED)
 else()
-  message(STATUS "Found Python.")
+  execute_process(
+    COMMAND powershell ${Python3_EXECUTABLE} --version
+    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    RESULT_VARIABLE PYTHON_RESULT
+    OUTPUT_VARIABLE PYTHON_OUTPUT
+  )
+  string(REPLACE "\n" "" PYTHON_OUTPUT ${PYTHON_OUTPUT})
+  string(REPLACE "Python " "" PYTHON_OUTPUT ${PYTHON_OUTPUT})
+  message(STATUS "Found python version: ${PYTHON_OUTPUT}")
 endif()
 
 set(Python3_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/python.exe)

@@ -1,0 +1,59 @@
+# https://github.com/electron/electron/releases/download/v13.1.6/electron-v13.1.6-win32-x64.zip
+cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
+
+project(Node-Install
+	VERSION 0.0.0.1
+	DESCRIPTION "Python Installition module"
+	HOMEPAGE_URL "..."
+  LANGUAGES NONE
+)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../../cmake")
+include(Helpers)
+add_project_defaults()
+
+# if(IS_WINDOWS)
+# endif()
+
+set(ELECTRON_POSTFIX "zip")
+set(ELECTRON_VER "13.1.6")
+set(ELECTRON_ARCH "x64")
+set(ELECTRON_INSTALLER_NAME "electron-v${ELECTRON_VER}-win32-${ELECTRON_ARCH}.${ELECTRON_POSTFIX}")
+set(ELECTRON_INSTALLER_PATH "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/${ELECTRON_INSTALLER_NAME}")
+set(ELECTRON_INSTALLER_SOURCE "https://github.com/electron/electron/releases/download/v${ELECTRON_VER}/${ELECTRON_INSTALLER_NAME}")
+
+set(ELECTRON_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/electron.exe)
+if(NOT EXISTS ${ELECTRON_EXECUTABLE})
+  if(EXISTS ${ELECTRON_INSTALLER_PATH})
+    message(STATUS "Electron installer found.")
+  else()
+    message(STATUS "Electron not found. Downloading from ${ELECTRON_INSTALLER_SOURCE}")
+    file(DOWNLOAD
+      "${ELECTRON_INSTALLER_SOURCE}"
+      "${ELECTRON_INSTALLER_PATH}"
+      SHOW_PROGRESS
+    )
+  endif()
+
+  file(ARCHIVE_EXTRACT
+    INPUT "${ELECTRON_INSTALLER_PATH}"
+    DESTINATION "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}"
+    VERBOSE
+  )
+
+  set(ELECTRON_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+  set(ELECTRON_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/electron.exe)
+  # set(NPM_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/npm.cmd)
+else()
+  execute_process(
+    COMMAND powershell ${ELECTRON_EXECUTABLE} --version
+    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    RESULT_VARIABLE ELECTRON_RESULT
+    OUTPUT_VARIABLE ELECTRON_OUTPUT
+  )
+  string(REPLACE "\n" "" ELECTRON_OUTPUT ${ELECTRON_OUTPUT})
+  string(REPLACE "v" "" ELECTRON_OUTPUT ${ELECTRON_OUTPUT})
+  message(STATUS "Found electron version: ${ELECTRON_OUTPUT}")
+endif()
+
+set(ELECTRON_EXECUTABLE ${ELECTRON_EXECUTABLE} PARENT_SCOPE)

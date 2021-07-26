@@ -1,0 +1,42 @@
+
+  <!-- <button id="hi-btn">Say hi!</button> -->
+  <header class="grid-header grid-item">
+    <!-- File System -->
+    <!-- <h1>Header</h1> -->
+    <!-- <nav>
+      <div class="dropdown">
+        <button class="dropdown-button">File</button>
+        <div class="dropdown-content">
+          file menu
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button">Edit</button>
+        <div class="dropdown-content">
+          Edit menu
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropdown-button">View</button>
+        <div class="dropdown-content">
+          View menu
+        </div>
+      </div>
+    </nav> -->
+  </header>
+  <side class="grid-left-side grid-item">
+    <!-- Working Tree -->
+    <h1>Working Tree</h1>
+    <button>Clear Screen</button>
+  </side>
+  <main class="grid-main grid-item">
+    <h1>Main View</h1>
+    <!-- Viewport -->
+    <!-- <iframe></iframe> -->
+  </main>
+  <side class="grid-right-side grid-item">
+    <h1>Histogram</h1>
+  </side>
+  <footer class="grid-footer grid-item">
+    <h1>Footer</h1>
+  </footer>
