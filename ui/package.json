@@ -1,11 +1,11 @@
 {
-  "name": "${PROJECT_NAME}",
-  "version": "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}",
-  "description": "${PROJECT_DESCRIPTION}",
+  "name": "@PROJECT_NAME@",
+  "version": "@PROJECT_VERSION_MAJOR@.@PROJECT_VERSION_MINOR@.@PROJECT_VERSION_PATCH@",
+  "description": "@PROJECT_DESCRIPTION@",
   "main": "main.js",
   "scripts": {
-    "start": "${ELECTRON_EXECUTABLE} ."
+    "start": "@ELECTRON_EXECUTABLE@ ."
   },
-  "author": "${DEVELOPER_NAME}",
+  "author": "@DEVELOPER_NAME@",
   "license": "MIT"
 }

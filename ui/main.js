@@ -24,7 +24,7 @@ const {spawn} = child_process
     mainWindow.removeMenu()
 
     // and load the index.html of the app.
-    mainWindow.loadFile('layout/index.html')
+    mainWindow.loadFile('@UI_LAYOUT_DIR@/index.html')
 
     // Open the DevTools.
     mainWindow.webContents.openDevTools()

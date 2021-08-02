@@ -12,6 +12,8 @@ include(Helpers)
 add_project_defaults()
 
 add_subdirectory(tools)
+add_subdirectory(modules)
+add_subdirectory(ui)
 
 
 # add_subdirectory(modules external)
@@ -25,4 +27,3 @@ add_subdirectory(src core)
 
 # This should be highly dependent on the
 # architecture of the system
-add_subdirectory(ui)

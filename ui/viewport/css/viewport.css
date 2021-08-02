@@ -1,0 +1,17 @@
+/* * {
+	padding: 0;
+	margin: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+} */
+#em-canvas {
+	/* border: 1px solid black; */
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: auto;
+	height: auto;
+	padding: 0;
+	margin: auto;
+	position: absolute;
+}
