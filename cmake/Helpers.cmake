@@ -11,13 +11,14 @@ macro(system_support) # {
 
   # message(STATUS "${CMAKE_SYSTEM_PROCESSOR}")
 
-  if(NOT IS_WINDOWS)
-    message(FATAL_ERROR "${CMAKE_SYSTEM_NAME}${BAD_SYSTEM_NAME_MSG}")
-  endif()
+  # if(NOT IS_WINDOWS)
+  #   message(FATAL_ERROR "${CMAKE_SYSTEM_NAME}${BAD_SYSTEM_NAME_MSG}")
+  # endif()
 
-  if(NOT IS_AMD64)
-    message(FATAL_ERROR "${CMAKE_SYSTEM_PROCESSOR}${BAD_SYSTEM_PROCESSOR_MSG}")
-  endif()
+  # if(NOT IS_AMD64)
+  #   message(FATAL_ERROR "${CMAKE_SYSTEM_PROCESSOR}${BAD_SYSTEM_PROCESSOR_MSG}")
+  # endif()
+
   endmacro() # }
 macro(folder_build_structure) #{
   # get_property(isMultiConfig GLOBAL PROPERTY GENERATOR_IS_MULTI_CONFIG)

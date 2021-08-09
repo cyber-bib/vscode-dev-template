@@ -1,5 +1,5 @@
 # https://github.com/emscripten-core/emsdk.git
-# https://github.com/emscripten-core/emsdk/archive/refs/tags/2.0.25.zip
+# https://github.com/emscripten-core/emsdk/archive/refs/tags/2.0.26.zip
 
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
@@ -18,7 +18,7 @@ add_project_defaults()
 # endif()
 
 set(EMSDK_POSTFIX "zip")
-set(EMSDK_VER "2.0.25")
+set(EMSDK_VER "2.0.26")
 set(EMSDK_ARCH "")
 set(EMSDK_INSTALLER_NAME "${EMSDK_VER}.${EMSDK_POSTFIX}")
 set(EMSDK_INSTALLER_PATH "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/${EMSDK_INSTALLER_NAME}")
@@ -55,6 +55,16 @@ if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
   set(ENV{PATH} "$ENV{PATH}${Python3_PATH}")
   message(STATUS "$ENV{PATH}")
 
+  message(STATUS "running \"./emsdk update\" this may take a few minutes.")
+  execute_process(
+    COMMAND ${Python3_EXECUTABLE} emsdk.py update
+    WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+    RESULT_VARIABLE EMSDK_RESULT
+    OUTPUT_VARIABLE EMSDK_OUTPUT
+    ECHO_OUTPUT_VARIABLE
+    ECHO_ERROR_VARIABLE
+  )
+
   message(STATUS "running \"./emsdk install latest\" this may take a few minutes.")
   execute_process(
     COMMAND ${Python3_EXECUTABLE} emsdk.py install latest
@@ -83,10 +93,28 @@ if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
   string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
   message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")
 
+
   set(EMSDK_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 else()
   message(STATUS "Found Emscripten.")
 endif()
 
-set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSDK_PATH}/${EMSCRIPTEN_RELATIVE_PATH}")
+# string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
+# message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")
+
+set(EMSDK_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+set(EMSDK_DIR "${EMSDK_DIR}" PARENT_SCOPE)
+
+set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSDK_DIR}/${EMSCRIPTEN_RELATIVE_PATH}")
 set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSCRIPTEN_TOOLCHAIN_PATH}" PARENT_SCOPE)
+
+# execute_process(
+#   COMMAND powershell ${EMSDK_DIR}/emsdk_env.ps1
+#   WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+#   RESULT_VARIABLE EMSDK_RESULT
+#   OUTPUT_VARIABLE EMSDK_OUTPUT
+#   ECHO_OUTPUT_VARIABLE
+#   ECHO_ERROR_VARIABLE
+# )
+# string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
+# message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")

@@ -14,14 +14,37 @@ add_project_defaults()
 add_subdirectory(layout)
 
 # viewport needs to be build as an external project
+# message(STATUS "${EMSCRIPTEN_TOOLCHAIN_PATH}")
 # add_subdirectory(viewport)
-# ExternalProject_Add(viewport_core
-#   SOURCE_DIR
-#     ${CMAKE_CURRENT_LIST_DIR}/viewport
-#   CMAKE_ARGS
-#     -DCMAKE_TOOLCHAIN_FILE=${EMSCRIPTEN_TOOLCHAIN_PATH}
-#     -G "MinGW Makefiles"
-# )
+
+# -D CMAKE_MAKE_PROGRAM=${MINGW_EXECUTABLE}"
+# -D CMAKE_C_COMPILER=${GCC_EXECUTABLE}"
+# -D CMAKE_CXX_COMPILER=${GXX_EXECUTABLE}"
+# message(STATUS "EMSDK: $ENV{EMSDK}")
+
+ExternalProject_Add(em-viewport
+  SOURCE_DIR
+    "${CMAKE_CURRENT_LIST_DIR}/viewport"
+  CMAKE_GENERATOR
+    "MinGW Makefiles"
+  CMAKE_ARGS
+    -D "EMSDK_DIR:FILEPATH='${EMSDK_DIR}'"
+    # -D "Python3_EXECUTABLE='${Python3_EXECUTABLE}'"
+    -D "CMAKE_MAKE_PROGRAM:FILEPATH='${MINGW_EXECUTABLE}'"
+    # -D "CMAKE_C_COMPILER=. ${Python3_EXECUTABLE} ${EMSDK_PATH}/emcc.py"
+    # -D "CMAKE_CXX_COMPILER=. ${Python3_EXECUTABLE}${EMSDK_PATH}/em++.py"
+    -D "CMAKE_TOOLCHAIN_FILE:FILEPATH='${EMSCRIPTEN_TOOLCHAIN_PATH}'"
+  INSTALL_COMMAND
+		""
+  BUILD_ALWAYS
+    TRUE
+	LOG_CONFIGURE
+    TRUE
+	LOG_BUILD
+    TRUE
+	LOG_INSTALL
+    TRUE
+)
 
 file(MAKE_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
 

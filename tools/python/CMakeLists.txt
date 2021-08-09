@@ -57,7 +57,11 @@ else()
   message(STATUS "Found python version: ${PYTHON_OUTPUT}")
 endif()
 
-set(Python3_EXECUTABLE ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/python.exe)
+
+set(PYTHON_DIR ${CMAKE_RUNTIME_OUTPUT_DIRECTORY})
+set(PYTHON_DIR ${PYTHON_DIR} PARENT_SCOPE)
+
+set(Python3_EXECUTABLE ${PYTHON_DIR}/python.exe)
 set(Python3_EXECUTABLE ${Python3_EXECUTABLE} PARENT_SCOPE)
 # set(ENV{PATH} "$ENV{PATH}${Python3_EXECUTABLE}" PARENT_SCOPE)
 # message(STATUS "$ENV{PATH}")
