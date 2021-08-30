@@ -18,7 +18,7 @@ add_project_defaults()
 # endif()
 
 set(EMSDK_POSTFIX "zip")
-set(EMSDK_VER "2.0.26")
+set(EMSDK_VER "2.0.27")
 set(EMSDK_ARCH "")
 set(EMSDK_INSTALLER_NAME "${EMSDK_VER}.${EMSDK_POSTFIX}")
 set(EMSDK_INSTALLER_PATH "${CMAKE_ARCHIVE_OUTPUT_DIRECTORY}/${EMSDK_INSTALLER_NAME}")
@@ -26,8 +26,14 @@ set(EMSDK_INSTALLER_SOURCE "https://github.com/emscripten-core/emsdk/archive/ref
 
 # find_package(EMSDK QUIET)
 # if(NOT EMSDK_FOUND)
+set( "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 set(EMSDK_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
-set(EMSCRIPTEN_RELATIVE_PATH "upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake")
+
+set(EMSCRIPTEN_TOOLCHAIN_NAME "sdk-upstream-main-64bit")
+set(EMSCRIPTEN_RELATIVE_PATH "emscripten/main/cmake/Modules/Platform/Emscripten.cmake")
+# set(EMSCRIPTEN_RELATIVE_PATH "emscripten/1.38.31/cmake/Modules/Platform/Emscripten.cmake")
+# set(EMSCRIPTEN_RELATIVE_PATH "upstream/emscripten/cmake/Modules/Platform/Emscripten.cmake")
+
 set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSDK_PATH}/${EMSCRIPTEN_RELATIVE_PATH}")
 if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
   if(EXISTS ${EMSDK_INSTALLER_PATH})
@@ -67,7 +73,7 @@ if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
 
   message(STATUS "running \"./emsdk install latest\" this may take a few minutes.")
   execute_process(
-    COMMAND ${Python3_EXECUTABLE} emsdk.py install latest
+    COMMAND ${Python3_EXECUTABLE} emsdk.py install ${EMSCRIPTEN_TOOLCHAIN_NAME}
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     RESULT_VARIABLE EMSDK_RESULT
     OUTPUT_VARIABLE EMSDK_OUTPUT
@@ -82,7 +88,7 @@ if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
 
   message(STATUS "running \"./emsdk activate latest\" this may take a few minutes.")
   execute_process(
-    COMMAND ${Python3_EXECUTABLE} emsdk.py activate latest
+    COMMAND ${Python3_EXECUTABLE} emsdk.py activate ${EMSCRIPTEN_TOOLCHAIN_NAME} --permanent
     WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
     RESULT_VARIABLE EMSDK_RESULT
     OUTPUT_VARIABLE EMSDK_OUTPUT
@@ -93,6 +99,18 @@ if(NOT EXISTS ${EMSCRIPTEN_TOOLCHAIN_PATH})
   string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
   message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")
 
+  # execute_process(
+  #   COMMAND powershell ${EMSDK_DIR}/emsdk_env.ps1
+  #   WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+  #   RESULT_VARIABLE EMSDK_RESULT
+  #   OUTPUT_VARIABLE EMSDK_OUTPUT
+  #   ECHO_OUTPUT_VARIABLE
+  #   ECHO_ERROR_VARIABLE
+  # )
+  # if(NOT EMSDK_OUTPUT STREQUAL "")
+  #   string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
+  # endif()
+  # message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")
 
   set(EMSDK_PATH "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
 else()
@@ -108,13 +126,16 @@ set(EMSDK_DIR "${EMSDK_DIR}" PARENT_SCOPE)
 set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSDK_DIR}/${EMSCRIPTEN_RELATIVE_PATH}")
 set(EMSCRIPTEN_TOOLCHAIN_PATH "${EMSCRIPTEN_TOOLCHAIN_PATH}" PARENT_SCOPE)
 
-# execute_process(
-#   COMMAND powershell ${EMSDK_DIR}/emsdk_env.ps1
-#   WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
-#   RESULT_VARIABLE EMSDK_RESULT
-#   OUTPUT_VARIABLE EMSDK_OUTPUT
-#   ECHO_OUTPUT_VARIABLE
-#   ECHO_ERROR_VARIABLE
-# )
-# string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
-# message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")
+execute_process(
+  COMMAND ${Python3_EXECUTABLE} emsdk.py activate ${EMSCRIPTEN_TOOLCHAIN_NAME} --permanent
+  WORKING_DIRECTORY ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}
+  RESULT_VARIABLE EMSDK_RESULT
+  OUTPUT_VARIABLE EMSDK_OUTPUT
+  ECHO_OUTPUT_VARIABLE
+  ECHO_ERROR_VARIABLE
+)
+
+if(NOT EMSDK_OUTPUT STREQUAL "")
+  string(REPLACE "\n" "\n--   " EMSDK_OUTPUT ${EMSDK_OUTPUT})
+endif()
+message(STATUS "output ${EMSDK_RESULT}:\n--   ${EMSDK_OUTPUT}")

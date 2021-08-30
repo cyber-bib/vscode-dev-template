@@ -1,4 +1,4 @@
-add_library(em-viewport-lib EXCLUDE_FROM_ALL)
+add_library(em-viewport-lib)
 
 target_sources(em-viewport-lib
 	PUBLIC
@@ -8,10 +8,10 @@ target_sources(em-viewport-lib
 		"${CMAKE_CURRENT_LIST_DIR}/viewport.cxx"
 )
 
-# target_link_libraries("em-viewport"
-# 	PUBLIC
-# 		"${VTK_LIBRARIES}"
-# )
+target_link_libraries(em-viewport-lib
+	PUBLIC
+		"${VTK_LIBRARIES}"
+)
 
 target_include_directories(em-viewport-lib
 	PUBLIC

@@ -25,15 +25,28 @@ add_subdirectory(layout)
 ExternalProject_Add(em-viewport
   SOURCE_DIR
     "${CMAKE_CURRENT_LIST_DIR}/viewport"
+  CMAKE_COMMAND
+    ${CMAKE_COMMAND} -E env 
+      EMSDK=${EMSDK_DIR}
+      EM_CONFIG=${EMSDK_DIR}/.emscripten
+      EMSDK_NODE=${EMSDK_DIR}/node/14.15.5_64bit/bin/node.exe
+      EMSDK_PYTHON=${EMSDK_DIR}/python/3.9.2-1_64bit/python.exe
+      JAVA_HOME=${EMSDK_DIR}/java/8.152_64bit
+      ${CMAKE_COMMAND}
   CMAKE_GENERATOR
     "MinGW Makefiles"
   CMAKE_ARGS
-    -D "EMSDK_DIR:FILEPATH='${EMSDK_DIR}'"
-    # -D "Python3_EXECUTABLE='${Python3_EXECUTABLE}'"
-    -D "CMAKE_MAKE_PROGRAM:FILEPATH='${MINGW_EXECUTABLE}'"
-    # -D "CMAKE_C_COMPILER=. ${Python3_EXECUTABLE} ${EMSDK_PATH}/emcc.py"
-    # -D "CMAKE_CXX_COMPILER=. ${Python3_EXECUTABLE}${EMSDK_PATH}/em++.py"
-    -D "CMAKE_TOOLCHAIN_FILE:FILEPATH='${EMSCRIPTEN_TOOLCHAIN_PATH}'"
+    -DCMAKE_MAKE_PROGRAM:FILEPATH=${MINGW_EXECUTABLE}
+    -DCMAKE_TOOLCHAIN_FILE:FILEPATH=${EMSCRIPTEN_TOOLCHAIN_PATH}
+    -DNODE_JS_EXECUTABLE:FILEPATH=${EMSDK_DIR}/node/14.15.5_64bit/bin/node.exe
+    -DEMSDK_DIR:FILEPATH=${EMSDK_DIR}
+    -DVTK_DIR:PATH=${EMVTK_DIR}/lib/cmake/vtk-9.0
+    # OpenGl Settings {
+      -DOPENGL_INCLUDE_DIR:PATH=${EMSDK_DIR}/upstream/emscripten/system/include 
+      -DOPENGL_EGL_INCLUDE_DIR:PATH=${EMSDK_DIR}/upstream/emscripten/system/include 
+      -DOPENGL_GLES2_INCLUDE_DIR:PATH=${EMSDK_DIR}/upstream/emscripten/system/include 
+      -DOPENGL_GLES3_INCLUDE_DIR:PATH=${EMSDK_DIR}/upstream/emscripten/system/include 
+      # } OpenGl Settings
   INSTALL_COMMAND
 		""
   BUILD_ALWAYS
