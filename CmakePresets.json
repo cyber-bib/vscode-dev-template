@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 20,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "test project",
+      "description": "test project",
+      "generator": "Visual Studio 17 2022",
+      "binaryDir": "./build"
+    },
+    {
+      "name": "win-emsdk",
+      "displayName": "Emsscripten on Windows",
+      "description": "Emsscripten on Windows",
+      "generator": "MinGW Makefiles",
+      "binaryDir":"./build/window/emsdk"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "default",
+      "configurePreset": "default"
+    }
+  ]
+}
