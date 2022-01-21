@@ -1,3 +1,3 @@
 . "${PSScriptRoot}\vars.ps1"
 
-. "${BuildDir}\bin\Release\${ExeName}.exe"
+. "${BuildDir}\core\bin\dev-template.exe"

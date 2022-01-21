@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "cmakeMinimumRequired": {
     "major": 3,
     "minor": 20,
@@ -7,21 +7,50 @@
   },
   "configurePresets": [
     {
+      "name": "win-mingw",
+      "displayName": "win-mingw",
+      "description": "Configures with MinGW on Windows",
+      "generator": "MinGW Makefiles",
+      "environment": {
+        "DEV_ROOT": "C:/Users/Alex/dev",
+        "MINGW_ROOT": "$env{DEV_ROOT}/mingw-w64/mingw64",
+        "Path": "$penv{Path};$env{MINGW_ROOT}/bin"
+      },
+      "binaryDir":"./build/windows/mingw"
+    },
+    {
+      "name": "win-emsdk",
+      "displayName": "win-emsdk",
+      "description": "Configures with Emscripten on Windows",
+      "inherits": "win-mingw",
+      "environment": {
+        "EMSDK_ROOT": "$env{DEV_ROOT}/emsdk",
+        "EMSCRIPTEN_ROOT": "$env{EMSDK_ROOT}/upstream/emscripten"
+      },
+      "toolchainFile": "$env{EMSCRIPTEN_ROOT}/cmake/Modules/Platform/Emscripten.cmake",
+      "binaryDir":"./build/windows/emsdk"
+    },
+    {
       "name": "default",
       "displayName": "test project",
       "description": "test project",
       "generator": "Visual Studio 17 2022",
       "binaryDir": "./build"
-    },
-    {
-      "name": "win-emsdk",
-      "displayName": "Emsscripten on Windows",
-      "description": "Emsscripten on Windows",
-      "generator": "MinGW Makefiles",
-      "binaryDir":"./build/window/emsdk"
     }
   ],
   "buildPresets": [
+    {
+      "name": "win-mingw",
+      "displayName": "win-mingw",
+      "description": "Builds with MinGW on Windows",
+      "configurePreset":"win-mingw"
+    },
+    {
+      "name": "win-emsdk",
+      "displayName": "win-emsdk",
+      "description": "Builds with Emscripten on Windows",
+      "configurePreset":"win-emsdk"
+    },
     {
       "name": "default",
       "configurePreset": "default"

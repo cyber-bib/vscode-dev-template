@@ -58,8 +58,8 @@
 					"label": "WinMinGW-Build",
 					"type": "shell",
 					"command": "${workspaceFolder}/cli/windows/MinGW/build.ps1",
-					"dependsOrder": "sequence",
 					"dependsOn": ["WinMinGW-Config"],
+					"dependsOrder": "sequence",
 					"presentation": {
 						"echo": true,
 						"reveal": "always",

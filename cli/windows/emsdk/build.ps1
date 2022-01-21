@@ -7,7 +7,7 @@ If(!(Test-Path $logpath)) {
   New-Item -ItemType Directory -Force -Path $logpath
 }
 
-cmake --build "${BuildDir}" $args `
+cmake --build --preset win-emsdk $args `
   1> "${logpath}/${logprefix}${logout}${logpostfix}" `
   2> "${logpath}/${logprefix}${logerr}${logpostfix}" `
   3> "${logpath}/${logprefix}${logwrn}${logpostfix}" `
