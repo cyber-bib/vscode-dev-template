@@ -27,10 +27,10 @@ class em::viewport {
             axesWidget_t m_axesWidget;
 			callback_t m_modified_cb;
     #pragma endregion } variables 
-    #pragma region initializers {
+    #pragma region [con/de]structors {
         public:
             viewport(const char* title = "vtk viewport");
-    #pragma endregion } initializers 
+    #pragma endregion } [con/de]structors  
     #pragma region getters {
         public:
             camera_t getCamera();

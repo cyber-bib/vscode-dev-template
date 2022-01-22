@@ -33,8 +33,8 @@
 		}
 	}
 #pragma endregion } window_modified_callback
-#pragma region viewport-implementation {
-	#pragma region initializers {
+#pragma region viewport {
+	#pragma region [con/de]structors {
 		em::viewport::viewport (
 			const char* title
 		) {
@@ -77,7 +77,7 @@
 			m_axesWidget->InteractiveOn();
 
 		}
-	#pragma endregion } initializers 
+	#pragma endregion } [con/de]structors 
 	#pragma region getters {
 		em::viewport::camera_t
 		em::viewport::getCamera() {
@@ -112,4 +112,4 @@
 			m_renderer->RemoveActor(actor);
 		}
 	#pragma endregion } peripheries
-#pragma endregion } viewport-implementation
+#pragma endregion } viewport

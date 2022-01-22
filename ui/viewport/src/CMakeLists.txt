@@ -1,3 +1,7 @@
+
+find_package(VTK REQUIRED)
+message(STATUS "vtk: ${VTK_LIBRARIES}")
+
 add_library(em-viewport-lib)
 
 target_sources(em-viewport-lib

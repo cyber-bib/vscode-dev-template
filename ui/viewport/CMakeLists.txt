@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
-set(ENV{EMSDK} "${EMSDK_DIR}")
-set(ENV{EM_CONFIG} "${EMSDK_DIR}/.emscripten")
-set(ENV{EMSDK_NODE} "${EMSDK_DIR}/node/14.15.5_64bit/bin/node.exe")
-set(ENV{EMSDK_PYTHON} "${EMSDK_DIR}/python/3.9.2-1_64bit/python.exe")
-set(ENV{JAVA_HOME} "${EMSDK_DIR}/java/8.152_64bit")
+# set(ENV{EMSDK} "${EMSDK_DIR}")
+# set(ENV{EM_CONFIG} "${EMSDK_DIR}/.emscripten")
+# set(ENV{EMSDK_NODE} "${EMSDK_DIR}/node/14.15.5_64bit/bin/node.exe")
+# set(ENV{EMSDK_PYTHON} "${EMSDK_DIR}/python/3.9.2-1_64bit/python.exe")
+# set(ENV{JAVA_HOME} "${EMSDK_DIR}/java/8.152_64bit")
 
 project(em-viewport-core
 	VERSION 0.0.0.1
@@ -55,9 +55,6 @@ add_project_defaults()
 		# message("\t- Flags: ${CMAKE_CXX_FLAGS}")
 		set(CMAKE_EXECUTABLE_SUFFIX ".html")
 		
-		find_package(VTK REQUIRED)
-		
-		message(STATUS "vtk: ${VTK_LIBRARIES}")
 	else()
 		message(FATAL_ERROR "${CMAKE_SYSTEM_NAME} system build is not supported")
 	endif()

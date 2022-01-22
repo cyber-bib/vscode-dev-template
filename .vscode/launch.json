@@ -2,7 +2,7 @@
 	"version": "0.2.0",
 	"configurations": [
 		// #region Windows
-			// #region MSVC
+			// #region MSVC {
 				// #region Config
 				{
 					"name": "Config (Windows MSVC)",
@@ -28,8 +28,8 @@
 					"preLaunchTask": "WinMSVC-Build",
 				},
 				// #endregion Run
-			// #endregion MSVS
-			// #region MinGW
+			// #endregion } MSVS
+			// #region MinGW {
 				// #region Config
 				{
 					"name": "Config (Windows MinGW)",
@@ -37,7 +37,7 @@
 					"request": "launch",
 					"script": "${workspaceFolder}/cli/windows/MinGW/config.ps1"
 				},
-				// #endregion Config
+				// #endregion } Config
 				// #region Build
 				{
 					"name": "Build (Windows MinGW)",
@@ -56,7 +56,7 @@
 				},
 				// #endregion Run
 			// #endregion MinGW
-			// #region Ninja
+			// #region Ninja {
 				// #region Config
 				{
 					"name": "Config (Windows Ninja)",
@@ -80,9 +80,36 @@
 					"request": "launch",
 					"script": "${workspaceFolder}/cli/windows/Ninja/run.ps1",
 					"preLaunchTask": "WinNinja-Build",
-				}
+				},
 				// #endregion Run
-			// #endregion Ninja
+			// #endregion } Ninja
+			// #region Emsdk {
+				// #region Config {
+				{
+					"name": "Config (Windows Emsdk)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/emsdk/config.ps1"
+				},
+				// #endregion } Config
+				// #region Build {
+				{
+					"name": "Build (Windows Emsdk)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/emsdk/build.ps1"
+				},
+				// #endregion } Build
+				// #region Run {
+				{
+					"name": "Run (Windows Emsdk)",
+					"type": "PowerShell",
+					"request": "launch",
+					"script": "${workspaceFolder}/cli/windows/emsdk/run.ps1",
+					"preLaunchTask": "WinEmsdk-Build",
+				}
+				// #endregion } Run
+			// #endregion } Emscripten
 		// #endregion Windows
 	]
 }

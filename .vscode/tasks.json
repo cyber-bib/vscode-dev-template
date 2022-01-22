@@ -2,8 +2,8 @@
 	"version": "2.0.0",
 	"tasks": [
 		// #region Windows
-			// #region MSVC
-				// #region config
+			// #region MSVC {
+				// #region config {
 				{
 					"label": "WinMSVC-Config",
 					"type": "shell",
@@ -18,8 +18,8 @@
 						"close": true
 					}
 				},
-				// #endregion config
-				// #region build
+				// #endregion } config
+				// #region build {
 				{
 					"label": "WinMSVC-Config",
 					"type": "shell",
@@ -34,10 +34,10 @@
 						"close": true
 					}
 				},
-				// #endregion build
-			// #endregion MSVS
-			// #region WinGW
-				// #region config
+				// #endregion } build
+			// #endregion } MSVS
+			// #region WinGW {
+				// #region config {
 				{
 					"label": "WinMinGW-Config",
 					"type": "shell",
@@ -52,14 +52,14 @@
 						"close": true
 					}
 				},
-				// #endregion config
-				// #region build
+				// #endregion } config
+				// #region build {
 				{
 					"label": "WinMinGW-Build",
 					"type": "shell",
 					"command": "${workspaceFolder}/cli/windows/MinGW/build.ps1",
-					"dependsOrder": "sequence",
 					"dependsOn": ["WinMinGW-Config"],
+					"dependsOrder": "sequence",
 					"presentation": {
 						"echo": true,
 						"reveal": "always",
@@ -70,8 +70,44 @@
 						"close": true
 					}
 				},
-				// #endregion build
-			// #endregion WinGW
+				// #endregion } build
+			// #endregion } WinGW
+			// #region Emsdk {
+				// #region Config {
+				{
+					"label": "WinEmsdk-Config",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/emsdk/config.ps1",
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion } Config
+				// #region Build {
+				{
+					"label": "WinEmsdk-Build",
+					"type": "shell",
+					"command": "${workspaceFolder}/cli/windows/emsdk/build.ps1",
+					"dependsOrder": "sequence",
+					"dependsOn": ["WinEmsdk-Config"],
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion } Build
+			// #endregion } Emsdk
 		// #endregion Windows
 	]
 }

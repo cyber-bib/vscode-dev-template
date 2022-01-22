@@ -1,5 +1,4 @@
 . "${PSScriptRoot}\..\..\globals.ps1"
 
-
-$SourceDir = "${Root}\src"
-$BuildDir = "${Root}\build\windows\MinGW"
+$BuildDir = "${Root}\build\windows\mingw"
+$LogDir = "${BuildDir}\log"

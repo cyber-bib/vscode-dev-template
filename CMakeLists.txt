@@ -4,7 +4,7 @@ project(dev-template
 	VERSION 0.0.0.1
 	DESCRIPTION "CMake Development template project"
 	HOMEPAGE_URL "..."
-  LANGUAGES C CXX
+  	LANGUAGES C CXX
 )
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -12,8 +12,8 @@ include(Helpers)
 add_project_defaults()
 
 # testing("hello" "world")
-add_subdirectory(tools)
-add_subdirectory(modules)
+# add_subdirectory(tools)
+# add_subdirectory(modules)
 add_subdirectory(ui)
 
 
