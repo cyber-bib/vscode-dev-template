@@ -16,7 +16,7 @@ class ui::mainwindow {
 	#pragma region aliases {
 		public:
 			typedef float float_t;
-			typedef worm::viewport viewport_t;
+			typedef em::viewport viewport_t;
 	#pragma endregion aliases }
 	#pragma region variables {
 		public:

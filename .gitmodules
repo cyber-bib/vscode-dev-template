@@ -1,4 +1,4 @@
-[submodule "vtk"]
+[submodule "modules/vtk/src"]
 	path = modules/vtk/src
 	url = https://gitlab.kitware.com/vtk/vtk.git
 [submodule "modules/emsdk/src"]

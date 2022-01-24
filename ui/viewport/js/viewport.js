@@ -180,3 +180,4 @@
 // #endregion } viewport
 
 var Module = new viewport();
+var app = vtkApp(Module);

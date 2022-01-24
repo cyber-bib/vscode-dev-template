@@ -73,6 +73,40 @@
 				// #endregion } build
 			// #endregion } WinGW
 			// #region Emsdk {
+				// #region Install {
+				{
+					"label": "WinEmsdk-Install",
+					"type": "shell",
+					"command": "${workspaceFolder}/modules/emsdk/src/emsdk install latest",
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion } Install
+				// #region Activate {
+				{
+					"label": "WinEmsdk-Activate",
+					"type": "shell",
+					"command": "${workspaceFolder}/modules/emsdk/src/emsdk activate latest --permanent",
+					"dependsOrder": "sequence",
+					"dependsOn": ["WinEmsdk-Install"],
+					"presentation": {
+						"echo": true,
+						"reveal": "always",
+						"focus": false,
+						"panel": "shared",
+						"showReuseMessage": true,
+						"clear": false,
+						"close": true
+					}
+				},
+				// #endregion } Activate
 				// #region Config {
 				{
 					"label": "WinEmsdk-Config",

@@ -76,6 +76,22 @@
 			m_axesWidget->SetEnabled(1);
 			m_axesWidget->InteractiveOn();
 
+
+			// Create a cone
+			vtkNew<vtkConeSource> coneSource;
+			coneSource->Update();
+
+			// Create a mapper and actor
+			vtkNew<vtkPolyDataMapper> mapper;
+			mapper->SetInputConnection(coneSource->GetOutputPort());
+
+			vtkNew<vtkActor> actor;
+			actor->SetMapper(mapper);
+
+			// Add the actors to the scene
+			this->add(actor);
+			
+
 		}
 	#pragma endregion } [con/de]structors 
 	#pragma region getters {
