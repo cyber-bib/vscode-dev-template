@@ -2,15 +2,14 @@
   "version": 3,
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 20,
+    "minor": 22,
     "patch": 0
   },
   "configurePresets": [
     {
-      "name": "win-emsdk-vtk",
-      "displayName": "win-emsdk-vtk",
-      "description": "Configures VTK with Emscripten on Windows",
-      "inherits": "win-emsdk",
+      "name": "emsdk-vtk-config",
+      "displayName": "emsdk-vtk-config",
+      "description": "Configures VTK with Emscripten",
       "cacheVariables": {
         "BUILD_SHARED_LIBS": {
           "type": "BOOL",
@@ -92,8 +91,27 @@
           "type": "BOOL",
           "value": "ON"
         }
-      },
+      }
+    },
+    {
+      "name": "win-emsdk-vtk",
+      "displayName": "win-emsdk-vtk",
+      "description": "Configures VTK with Emscripten on Windows",
+      "inherits": [
+        "win-emsdk",
+        "emsdk-vtk-config"
+      ],
       "binaryDir": "./build/windows/emsdk/modules/vtk"
+    },
+    {
+      "name": "lin-emsdk-vtk",
+      "displayName": "lin-emsdk-vtk",
+      "description": "Configures VTK with Emscripten on Linux",
+      "inherits": [
+        "lin-emsdk",
+        "emsdk-vtk-config"
+      ],
+      "binaryDir": "./workspaces/vscode-dev-template/modules/vtk/build/emsdk"
     }
   ],
   "buildPresets": [
