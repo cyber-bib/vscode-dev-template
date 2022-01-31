@@ -1,6 +1,6 @@
 macro(developer_info) # {
   set(DEVELOPER_NAME "Luis Vega")
-  set(DEVELOPER_EMAIL "luis.vega_merchan@siemens.com")
+  set(DEVELOPER_EMAIL "lvega1@uncc.edu")
   endmacro() # }
 macro(system_support) # {
   set(BAD_SYSTEM_NAME_MSG " system is currently not supported. Please email ${DEVELOPER_NAME} to ${DEVELOPER_EMAIL} to add support.")

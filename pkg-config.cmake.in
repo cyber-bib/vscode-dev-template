@@ -1,0 +1,63 @@
+### pkg-config example example ###
+
+@PACKAGE_INIT@
+
+include(${CMAKE_CURRENT_LIST_DIR}/hello-targets.cmake)
+
+# check_required_components(hello)
+
+### CMakeLists.txt example ###
+
+# include(CMakePackageConfigHelpers)
+# include(GenerateExportHeader)
+
+# set(CURRENT_LIB_NAME hello)
+# set(CONFIG_FILE_NAME ${CURRENT_LIB_NAME}-config.cmake)
+# set(CONFIG_FILE_PATH ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/cmake/${CONFIG_FILE_NAME})
+# set(CONFIG_VERSION_FILE_NAME ${CURRENT_LIB_NAME}-config-version.cmake)
+# set(CONFIG_VERSION_FILE_PATH ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/cmake/${CONFIG_VERSION_FILE_NAME})
+
+# add_library(${CURRENT_LIB_NAME})
+# target_sources(${CURRENT_LIB_NAME}
+#   PRIVATE 
+#     src/somelib.h
+#     src/somelib.cpp )
+# # set_target_properties(${CURRENT_LIB_NAME}
+# #   PROPERTIES
+# #     PUBLIC_HEADER src/somelib.h )
+# target_include_directories(${CURRENT_LIB_NAME}
+#   PUBLIC ${CMAKE_CURRENT_LIST_DIR}/src )
+
+# configure_package_config_file(pkg-config-template.cmake.in ${CONFIG_FILE_PATH}  
+#   INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake )
+# write_basic_package_version_file(
+#   ${CONFIG_VERSION_FILE_PATH}
+#   VERSION 0.1.0
+#   COMPATIBILITY AnyNewerVersion )
+
+# file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${CONFIG_FILE_NAME}
+#   "include(${CONFIG_FILE_PATH})" )
+# file(COPY_FILE
+#   "${CONFIG_VERSION_FILE_PATH}"
+#   "${CMAKE_CURRENT_BINARY_DIR}/${CONFIG_VERSION_FILE_NAME}" )
+
+# # include("C:/Users/Alex/dev/vtk/build/msvc/lib/cmake/vtk-9.1/vtk-config.cmake")
+# export(TARGETS ${CURRENT_LIB_NAME} FILE ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/cmake/${CURRENT_LIB_NAME}-targets.cmake)
+# # $<BUILD_INTERFACE:${CMAKE_LIBRARY_OUTPUT_DIRECTORY}/${VERSION_FILE_RPATH}>
+# # $<INSTALL_INTERFACE:${CMAKE_INSTALL_LIBDIR}/${VERSION_FILE_RPATH}>
+
+# # generate_export_header(hello-lib)
+
+# # install(TARGETS hello-lib EXPORT hello-lib-target
+# #   DESTINATION ${CMAKE_CURRENT_LIST_DIR}/packages
+# # )
+
+# # install(
+# #   FILES
+# #     hello-lib.h
+# #     "${CMAKE_CURRENT_BINARY_DIR}/hello-lib_export.h"
+# #   DESTINATION
+# #     ${CMAKE_CURRENT_LIST_DIR}/packages/include
+# #   COMPONENT
+# #     Hello
+# # )
