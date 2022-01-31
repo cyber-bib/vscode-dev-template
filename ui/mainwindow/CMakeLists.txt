@@ -2,22 +2,21 @@
 # find_package(VTK REQUIRED)
 # message(STATUS "vtk: ${VTK_LIBRARIES}")
 
-add_library(em-viewport-obj)
+add_library(em-mainwindow-obj)
 
-target_sources(em-viewport-obj
+target_sources(em-mainwindow-obj
 	PUBLIC
-		"${CMAKE_CURRENT_LIST_DIR}/viewport-fd.hxx"
-		"${CMAKE_CURRENT_LIST_DIR}/viewport.hxx"
+		"${CMAKE_CURRENT_LIST_DIR}/mainwindow.hxx"
 	PRIVATE
-		"${CMAKE_CURRENT_LIST_DIR}/viewport.cxx"
+		"${CMAKE_CURRENT_LIST_DIR}/mainwindow.cxx"
 )
 
-target_link_libraries(em-viewport-obj
+target_link_libraries(em-mainwindow-obj
 	PUBLIC
-		"${VTK_LIBRARIES}"
+		em-viewport-obj
 )
 
-target_include_directories(em-viewport-obj
+target_include_directories(em-mainwindow-obj
 	PUBLIC
 		"${CMAKE_CURRENT_LIST_DIR}"
 )
@@ -32,6 +31,6 @@ target_include_directories(em-viewport-obj
 # 			JAVA_HOME=${EMSDK_PATH}/java/8.152_64bit
 # 			${CMAKE_COMMAND}
 # 				--build ./
-# 				--target em-viewport-obj
+# 				--target em-viewport-lib
 # 	USES_TERMINAL
 # )

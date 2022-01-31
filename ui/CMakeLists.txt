@@ -12,8 +12,12 @@ include(Helpers)
 
 add_project_defaults()
 
+find_package(VTK REQUIRED)
+# message(STATUS "vtk: ${VTK_LIBRARIES}")
+
 add_subdirectory(layout)
 add_subdirectory(viewport)
+add_subdirectory(mainwindow)
 # ExternalProject_Add(em-viewport
 #   SOURCE_DIR
 #     "${CMAKE_CURRENT_LIST_DIR}/viewport"

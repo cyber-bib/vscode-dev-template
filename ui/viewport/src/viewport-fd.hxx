@@ -22,6 +22,21 @@
 // #include <vtkCylinderSource.h>
 #include <vtkPolyDataMapper.h>
 
+#include <vtkConeSource.h>
+#include <vtkNew.h>
+
+#include <vtkActor.h>
+#include <vtkNamedColors.h>
+#include <vtkPolyData.h>
+#include <vtkPolyDataMapper.h>
+#include <vtkProperty.h>
+#include <vtkRenderWindow.h>
+#include <vtkRenderWindowInteractor.h>
+#include <vtkRenderer.h>
+
+
+
+
 #include <array>
 #include <iostream>
 

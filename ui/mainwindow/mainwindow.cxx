@@ -6,8 +6,8 @@
 		viewport_t::camera_t
 		camera = m_viewport.getCamera();
 
-		camera->SetPosition(-452.0, 424.0, 366.0);
-		camera->SetFocalPoint(91.0, 88.0, 99.0);
+		camera->SetPosition(-50.0, 50.0, 50.0);
+		camera->SetFocalPoint(0, 0, 0);
 		camera->SetViewUp(0.0, 1.0, 0.0);
 
 	}

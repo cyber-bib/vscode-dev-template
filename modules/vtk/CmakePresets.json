@@ -2,55 +2,14 @@
   "version": 3,
   "cmakeMinimumRequired": {
     "major": 3,
-    "minor": 20,
+    "minor": 22,
     "patch": 0
   },
   "configurePresets": [
     {
-      "name": "default",
-      "displayName": "default",
-      "description": "Configures needed cache cariables",
-      "environment": {
-        "DEV_ROOT": "D:/dev"
-      },
-      "cacheVariables": {
-        "VTK_DIR": {
-          "type": "PATH",
-          "value": "$env{DEV_ROOT}/vtk9/build/emsdk"
-        }
-      },
-      "binaryDir":"./build/windows/mingw"
-    },
-    {
-      "name": "win-mingw",
-      "displayName": "win-mingw",
-      "description": "Configures with MinGW on Windows",
-      "inherits": "default",
-      "generator": "MinGW Makefiles",
-      "environment": {
-        "DEV_ROOT": "D:/dev",
-        "MINGW_ROOT": "$env{DEV_ROOT}/mingw-w64/mingw64",
-        "Path": "$penv{Path};$env{MINGW_ROOT}/bin"
-      },
-      "binaryDir":"./build/windows/mingw"
-    },
-    {
-      "name": "win-emsdk",
-      "displayName": "win-emsdk",
-      "description": "Configures with Emscripten on Windows",
-      "inherits": "win-mingw",
-      "environment": {
-        "EMSDK_ROOT": "$env{DEV_ROOT}/emsdk",
-        "EMSCRIPTEN_ROOT": "$env{EMSDK_ROOT}/upstream/emscripten"
-      },
-      "toolchainFile": "$env{EMSCRIPTEN_ROOT}/cmake/Modules/Platform/Emscripten.cmake",
-      "binaryDir":"./build/windows/emsdk"
-    },
-    {
-      "name": "win-emsdk-vtk",
-      "displayName": "win-emsdk-vtk",
-      "description": "Configures VTK with Emscripten on Windows",
-      "inherits": "win-emsdk",
+      "name": "emsdk-vtk-config",
+      "displayName": "emsdk-vtk-config",
+      "description": "Configures VTK with Emscripten",
       "cacheVariables": {
         "BUILD_SHARED_LIBS": {
           "type": "BOOL",
@@ -132,33 +91,29 @@
           "type": "BOOL",
           "value": "ON"
         }
-      },
+      }
+    },
+    {
+      "name": "win-emsdk-vtk",
+      "displayName": "win-emsdk-vtk",
+      "description": "Configures VTK with Emscripten on Windows",
+      "inherits": [
+        "win-emsdk",
+        "emsdk-vtk-config"
+      ],
       "binaryDir": "./build/windows/emsdk/modules/vtk"
     },
     {
-      "name": "blob",
-      "displayName": "test project",
-      "description": "test project",
-      "generator": "Visual Studio 17 2022",
-      "binaryDir": "./build"
+      "name": "lin-emsdk-vtk",
+      "displayName": "lin-emsdk-vtk",
+      "description": "Configures VTK with Emscripten on Linux",
+      "inherits": [
+        "lin-emsdk",
+        "emsdk-vtk-config"
+      ],
+      "binaryDir": "./workspaces/vscode-dev-template/modules/vtk/build/emsdk"
     }
   ],
   "buildPresets": [
-    {
-      "name": "win-mingw",
-      "displayName": "win-mingw",
-      "description": "Builds with MinGW on Windows",
-      "configurePreset":"win-mingw"
-    },
-    {
-      "name": "win-emsdk",
-      "displayName": "win-emsdk",
-      "description": "Builds with Emscripten on Windows",
-      "configurePreset":"win-emsdk"
-    },
-    {
-      "name": "blob",
-      "configurePreset": "blob"
-    }
   ]
 }
